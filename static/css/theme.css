@@ -1,0 +1,39 @@
+.tasklist-item {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+}
+
+.tasklist-item:nth-child(n+2) {
+    border-top: 0;
+}
+
+.ptop {
+    padding-top: 10px;
+}
+
+.taskdescription {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 10px;
+    margin: 10px 0;
+    color: #333;
+    font-size: 12px;
+}
+
+.onecomment .tools {
+    float: right;
+}
+
+.onecomment .commentname {
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+.onecomment .commenttext {
+    clear: both;
+    padding: 5px 5px;
+    margin: 10px 0;
+    color: #333;
+    font-size: 12px;
+}
