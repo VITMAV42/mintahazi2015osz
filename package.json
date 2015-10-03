@@ -1,0 +1,23 @@
+{
+  "name": "vitmav42-2015oszminta",
+  "version": "0.0.1",
+  "description": "Minta feladat",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VITMAV42/mintahazi2015osz.git"
+  },
+  "author": "Zsombor Paroczi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VITMAV42/mintahazi2015osz/issues"
+  },
+  "homepage": "https://github.com/VITMAV42/mintahazi2015osz#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
