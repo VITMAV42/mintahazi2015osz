@@ -49,4 +49,4 @@ User.prototype.save = function (cb) {
   return cb(null, this);
 };
 
-module.exports.User = User;
+module.exports = User;

@@ -1,7 +1,7 @@
 var requireOption = require('../common').requireOption;
 
 /**
- * This middleware load the use from model and checks the credentials,
+ * This middleware loads the user from model and checks the credentials,
  * if they are ok, set session values and redirect to /
  * if they are wrong, set error message
  */
