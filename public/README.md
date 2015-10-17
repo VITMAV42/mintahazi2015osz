@@ -1,0 +1,1 @@
+Every static asset will be here.
