@@ -1,3 +1,5 @@
+var requireOption = require('../common').requireOption;
+
 /**
  * This middleware load the use from model and checks the credentials,
  * if they are ok, set session values and redirect to /
@@ -5,7 +7,7 @@
  */
 module.exports = function (objectrepository) {
 
-  var userModel = objectrepository.userModel;
+  var userModel = requireOption(objectrepository,'userModel');
 
   return function (req, res, next) {
 
