@@ -5,7 +5,7 @@
  */
 module.exports = function (objectrepository) {
 
-  var userModel = objectrepository['userModel'];
+  var userModel = objectrepository.userModel;
 
   return function (req, res, next) {
 

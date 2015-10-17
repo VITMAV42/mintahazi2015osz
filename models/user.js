@@ -45,7 +45,7 @@ User.prototype.find = function (criteria, cb) {
  * @param cb error first callback
  * @returns {*}
  */
-Kutya.prototype.save = function (cb) {
+User.prototype.save = function (cb) {
   return cb(null, this);
 };
 
