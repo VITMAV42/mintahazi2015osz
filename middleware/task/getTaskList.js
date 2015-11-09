@@ -9,19 +9,16 @@ module.exports = function (objectrepository) {
 
   return function (req, res, next) {
 
-    /**
-     * Something like:
-     *  taskModel.find({},function(err,results){
-     *    if (err){
-     *      return next(new Error('Error getting tasks'));
-     *    }
-     *
-     *    res.tpl.tasks = results;
-     *    return next();
-     *  )
-     */
+    taskModel.find({
 
-    return next();
+    }, function (err, results) {
+      if (err) {
+        return next(new Error('Error getting tasks'));
+      }
+
+      res.tpl.tasks = results;
+      return next();
+    });
   };
 
 };

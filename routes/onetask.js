@@ -11,11 +11,13 @@ var onlyMyCommentMW = require('../middleware/comment/onlyMyComment');
 
 var taskModel = require('../models/task');
 var commentModel = require('../models/comment');
+var userModel = require('../models/user');
 
 module.exports = function (app) {
   var objectRepository = {
     taskModel: taskModel,
-    commentModel: commentModel
+    commentModel: commentModel,
+    userModel: userModel
   };
 
   /**
@@ -34,7 +36,7 @@ module.exports = function (app) {
    * Show task page POST part
    * - only new comments can come from here :)
    */
-  app.get('/task/:taskid',
+  app.post('/task/:taskid',
     authMW(objectRepository),
     getTaskMW(objectRepository),
     updateCommentMW(objectRepository),

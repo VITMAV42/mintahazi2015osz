@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TODO app</title>
-
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-    <link href="css/theme.css" rel="stylesheet">
-</head>
-<body>
+<%- include('header') %>
 <!-- start: content -->
 <div class="container">
     <div class="row">
@@ -19,7 +7,7 @@
         </div>
         <div class="col-md-push-3 col-md-6 col-xs-12">
 
-            <form>
+            <form method="POST">
                 <div class="form-group">
                     <label for="taskname">Task name</label>
                     <input type="text" class="form-control" id="taskname" placeholder="Task name">
@@ -30,17 +18,12 @@
 
                     </textarea>
                 </div>
-                <a href="index.html" class="btn btn-primary">New task</a>
-                <a href="index.html" class="btn btn-default">Cancel</a>
+                <input type="submit" class="btn btn-primary" value="New task"/>
+                <a href="/tasks" class="btn btn-default">Cancel</a>
             </form>
 
         </div>
     </div>
 </div>
 <!-- end: content -->
-
-
-<script src="js/jquery.1.11.3.js"></script>
-<script src="js/bootstrap.js"></script>
-</body>
-</html>
+<%- include('footer') %>

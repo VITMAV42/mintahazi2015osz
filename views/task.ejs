@@ -1,0 +1,57 @@
+<%- include('header') %>
+<!-- start: content -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2><input type="checkbox"/> <%= task.title %></h2>
+        </div>
+        <div class="col-xs-12">
+            Currently assigned to: <span>Pistike</span>
+        </div>
+        <div class="col-xs-12">
+            <div class="taskdescription">
+                <%= task.description %>
+            </div>
+        </div>
+
+        <div class="col-xs-12 text-center">
+            <form>
+                <div class="form-inline">
+                    <a href="/task/<%= task.id %>/edit" class="btn btn-default btn-sm">Modify task</a>
+                    <a href="/task/<%= task.id %>/delete" class="btn btn-default btn-sm">Delete task</a>
+
+                    <select class="form-control input-sm" name="reassign">
+                        <% users.forEach(function (oneUser){ %>
+                        <option value="<%= oneUser.id %>"><%= oneUser.name %></option>
+                        <% }); %>
+                    </select>
+                    <input type="submit" class="btn btn-default btn-sm" value="Reassign"/>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-xs-12">
+            <h3>Comments</h3>
+        </div>
+
+        <div class="col-xs-12">
+            <% comments.forEach(function (item){ %>
+                <%- include('onecomment',{item : item, taskid : task.id}) %>
+            <% }); %>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="newcomment">New comment</label>
+                    <textarea class="form-control" id="newcomment">
+
+                    </textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" value="New comment"/>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+</div>
+<!-- end: content -->
+<%- include('footer') %>

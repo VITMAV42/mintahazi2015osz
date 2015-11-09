@@ -12,6 +12,7 @@ var CommentInstanceMock = {
   id: 1,
   task: 1,
   user: 1,
+  date: '2015-01-02',
   comment: 'Lorem ipsum'
 };
 
@@ -21,7 +22,7 @@ var CommentInstanceMock = {
  * @param cb error first callback
  * @returns {*}
  */
-Comment.prototype.findOne = function (criteria, cb) {
+Comment.findOne = function (criteria, cb) {
 
   //returns 1 mocked item
   return cb(null, CommentInstanceMock);
@@ -33,7 +34,7 @@ Comment.prototype.findOne = function (criteria, cb) {
  * @param cb error first callback
  * @returns {*}
  */
-Comment.prototype.find = function (criteria, cb) {
+Comment.find = function (criteria, cb) {
 
   //returns 3 mocked item
   return cb(null, [CommentInstanceMock, CommentInstanceMock, CommentInstanceMock]);

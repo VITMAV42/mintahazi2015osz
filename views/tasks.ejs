@@ -1,0 +1,31 @@
+<%- include('header') %>
+<!-- start: content -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h2>TODO</h2>
+        </div>
+        <div class="col-md-push-3 col-md-6 col-xs-12">
+
+            <% tasks.forEach(function(item){ %>
+            <div class="tasklist-item row">
+                <div class="col-xs-2">
+                    <input type="checkbox"/>
+                </div>
+                <div class="title col-xs-6">
+                    <a href="/task/<%= item.id %>"><%= item.title %></a>
+                </div>
+                <div class="assignedto col-xs-4 text-right">
+                    Pistike
+                </div>
+            </div>
+            <% }); %>
+
+            <div class="text-right ptop">
+                <a href="/tasks/new" class="btn btn-primary">New task</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end: content -->
+<%- include('footer') %>

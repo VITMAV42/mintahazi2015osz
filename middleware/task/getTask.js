@@ -11,19 +11,16 @@ module.exports = function (objectrepository) {
 
   return function (req, res, next) {
 
-    /**
-     * Something like:
-     *  taskModel.findOne({ id: req.param('taskid')},function(err,result){
-     *    if ((err) || (!result)){
-     *      return req.redirect('/tasks');
-     *    }
-     *
-     *    res.tpl.task = result;
-     *    return next();
-     *  )
-     */
+    taskModel.findOne({
+      id: req.param('taskid')
+    }, function (err, result) {
+      if ((err) || (!result)) {
+        return req.redirect('/tasks');
+      }
 
-    return next();
+      res.tpl.task = result;
+      return next();
+    });
   };
 
 };

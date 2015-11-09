@@ -9,19 +9,16 @@ module.exports = function (objectrepository) {
   var commentModel = requireOption(objectrepository, 'commentModel');
 
   return function (req, res, next) {
-    /**
-     * Something like:
-     *  commentModel.find({ task: req.param('taskid')},function(err,results){
-     *    if (err){
-     *      return next(err);
-     *    }
-     *
-     *    res.tpl.comments = results;
-     *    return next();
-     *  )
-     */
+    commentModel.find({
+      task: req.param('taskid')
+    }, function (err, results) {
+      if (err) {
+        return next(err);
+      }
 
-    return next();
+      res.tpl.comments = results;
+      return next();
+    });
   };
 
 };

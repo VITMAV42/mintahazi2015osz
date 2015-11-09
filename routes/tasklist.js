@@ -11,11 +11,22 @@ var getUserByIdMW = require('../middleware/user/getUserById');
 var renderMW = require('../middleware/generic/render');
 
 var taskModel = require('../models/task');
+var userModel = require('../models/user');
 
 module.exports = function (app) {
   var objectRepository = {
-    taskModel: taskModel
+    taskModel: taskModel,
+    userModel: userModel
   };
+
+  /**
+   * Create new task
+   */
+  app.use('/tasks/new',
+    authMW(objectRepository),
+    updateTaskMW(objectRepository),
+    renderMW(objectRepository, 'newtask')
+  );
 
   /**
    * List all tasks
@@ -24,15 +35,6 @@ module.exports = function (app) {
     authMW(objectRepository),
     getTaskListMW(objectRepository),
     renderMW(objectRepository, 'tasks')
-  );
-
-  /**
-   * Create new task
-   */
-  app.user('/tasks/new',
-    authMW(objectRepository),
-    updateTaskMW(objectRepository),
-    renderMW(objectRepository, 'newtask')
   );
 
   /**

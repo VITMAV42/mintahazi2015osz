@@ -24,7 +24,7 @@ var TaskInstanceMock = {
  * @param cb error first callback
  * @returns {*}
  */
-Task.prototype.findOne = function (criteria, cb) {
+Task.findOne = function (criteria, cb) {
 
   //returns 1 mocked item
   return cb(null, TaskInstanceMock);
@@ -36,7 +36,7 @@ Task.prototype.findOne = function (criteria, cb) {
  * @param cb error first callback
  * @returns {*}
  */
-Task.prototype.find = function (criteria, cb) {
+Task.find = function (criteria, cb) {
 
   //returns 3 mocked item
   return cb(null, [TaskInstanceMock, TaskInstanceMock, TaskInstanceMock]);

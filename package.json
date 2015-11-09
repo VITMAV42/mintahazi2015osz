@@ -20,6 +20,9 @@
   },
   "homepage": "https://github.com/VITMAV42/mintahazi2015osz#readme",
   "dependencies": {
-    "express": "^4.13.3"
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-session": "^1.12.1"
   }
 }

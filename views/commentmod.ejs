@@ -1,0 +1,25 @@
+<%- include('header') %>
+<!-- start: content -->
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Modify comment</h2>
+        </div>
+        <div class="col-md-push-3 col-md-6 col-xs-12">
+
+            <form method="POST" action="/task/<%= comment.task %>">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea class="form-control" id="comment">
+
+                    </textarea>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Save comment"/>
+                <a href="/task/<%= comment.task %>" class="btn btn-default">Cancel</a>
+            </form>
+
+        </div>
+    </div>
+</div>
+<!-- end: content -->
+<%- include('footer') %>
