@@ -10,15 +10,19 @@
             <form method="POST">
                 <div class="form-group">
                     <label for="taskname">Task name</label>
-                    <input type="text" class="form-control" id="taskname" placeholder="Task name">
+                    <input type="text" class="form-control" id="taskname" placeholder="Task name" name="title"
+                           value="<%= (typeof task !== 'undefined') ? task.title : '' %>">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description">
-
-                    </textarea>
+                    <textarea class="form-control" id="description"
+                              name="description"><%= (typeof task !== 'undefined') ? task.description : '' %></textarea>
                 </div>
+                <% if (typeof task !== 'undefined'){ %>
                 <input type="submit" class="btn btn-primary" value="New task"/>
+                <% }else{ %>
+                <input type="submit" class="btn btn-primary" value="Save task"/>
+                <% } %>
                 <a href="/tasks" class="btn btn-default">Cancel</a>
             </form>
 

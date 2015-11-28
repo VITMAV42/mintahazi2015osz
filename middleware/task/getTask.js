@@ -12,7 +12,7 @@ module.exports = function (objectrepository) {
   return function (req, res, next) {
 
     taskModel.findOne({
-      id: req.param('taskid')
+      _id: req.param('taskid')
     }, function (err, result) {
       if ((err) || (!result)) {
         return res.redirect('/tasks');

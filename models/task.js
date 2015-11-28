@@ -10,8 +10,7 @@ var Task = db.model('Task', {
   _assignedto: {
     type: Schema.Types.ObjectId,
     ref: 'User'
-  },
-  likes: [ {ki: String }]
+  }
 });
 
 module.exports = Task;
