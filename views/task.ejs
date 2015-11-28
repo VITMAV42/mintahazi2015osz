@@ -15,12 +15,13 @@
         </div>
 
         <div class="col-xs-12 text-center">
-            <form>
+            <form action="/task/<%= task.id %>/reassign">
                 <div class="form-inline">
                     <a href="/task/<%= task.id %>/edit" class="btn btn-default btn-sm">Modify task</a>
                     <a href="/task/<%= task.id %>/delete" class="btn btn-default btn-sm">Delete task</a>
 
-                    <select class="form-control input-sm" name="reassign">
+                    <select class="form-control input-sm" name="userid">
+                        <option value="null">- Nobody -</option>
                         <% users.forEach(function (oneUser){ %>
                         <option value="<%= oneUser.id %>"><%= oneUser.name %></option>
                         <% }); %>

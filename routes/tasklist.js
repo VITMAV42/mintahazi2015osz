@@ -61,7 +61,7 @@ module.exports = function (app) {
   );
 
   /**
-   * Reassign task (will redirect to /tasks after finish)
+   * Reassign task (will redirect to /task/:taskid after finish)
    * :userid will come from POST / GET, userid can be null
    */
   app.use('/task/:taskid/reassign',
@@ -70,7 +70,7 @@ module.exports = function (app) {
     getUserByIdMW(objectRepository),
     reassignTaskMW(objectRepository),
     function (req, res, next) {
-      return res.redirect('/tasks');
+      return res.redirect('/task/' + req.param('taskid'));
     }
   );
 

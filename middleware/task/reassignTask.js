@@ -4,39 +4,32 @@
  */
 module.exports = function (objectrepository) {
   return function (req, res, next) {
+    //grab the task
+    if (typeof res.tpl.task === 'undefined') {
+      return next();
+    }
 
-    /**
-     * Something like:
-     *
-     *  //grab the task
-     *  if (typeof res.tpl.task === 'undefined'){
-     *    return next();
-     *  }
-     *
-     *  //grab the user
-     *  var who = null;
-     *
-     *  if (req.param('userid') === 'null'){
-     *    who = null;
-     *  }else if (typeof req.tpl.user == 'undefined){
-     *    //wrong userid
-     *    return next(new Error('No such userid'));
-     *  }else{
-     *    //nice
-     *    who = req.tpl.user.id;
-     *  }
-     *
-     *  res.tpl.task.assignedto = who;
-     *  res.tpl.task.save(function(err){
-     *    if (err){
-     *      return next(err);
-     *    }
-     *
-     *    return next();
-     *  });
-     */
+    //grab the user
+    var who = null;
 
-    return next();
+    if (req.param('userid') === 'null') {
+      who = null;
+    } else if (typeof res.tpl.user == 'undefined') {
+      //wrong userid
+      return next(new Error('No such userid'));
+    } else {
+      //nice
+      who = res.tpl.user;
+    }
+
+    res.tpl.task._assignedto = who;
+    res.tpl.task.save(function (err) {
+      if (err) {
+        return next(err);
+      }
+
+      return next();
+    });
   };
 
 };
