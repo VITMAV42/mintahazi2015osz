@@ -12,25 +12,20 @@ module.exports = function (objectrepository) {
 
   return function (req, res, next) {
 
-    /**
-     * Something like:
-     *  if ((typeof res.tpl.task ==='undefined') ||
-     *  (typeof app.param('state') === 'undefined')){
-     *      return next();
-     *  }
-     *
-     *  res.tpl.task.state = app.param('state');
-     *  res.tpl.save(function(err,result){
-     *    if (err)
-     *    {
-     *      return next(err);
-     *    }
-     *
-     *    next();
-     *  });
-     */
+    if ((typeof res.tpl.task === 'undefined') ||
+      (typeof req.param('newstate') === 'undefined')) {
+      return next();
+    }
 
-    return next();
+    res.tpl.task.state = req.param('newstate');
+
+    res.tpl.task.save(function (err, result) {
+      if (err) {
+        return next(err);
+      }
+
+      next();
+    });
   };
 
 };

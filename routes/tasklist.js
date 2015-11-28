@@ -83,7 +83,7 @@ module.exports = function (app) {
     getTaskMW(objectRepository),
     changeStateMW(objectRepository),
     function (req, res, next) {
-      return res.redirect('/tasks');
+      res.end(""+res.tpl.task.state);
     }
   );
 };

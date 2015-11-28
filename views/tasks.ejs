@@ -10,7 +10,7 @@
             <% tasks.forEach(function(item){ %>
             <div class="tasklist-item row">
                 <div class="col-xs-2">
-                    <input type="checkbox"/>
+                    <input type="checkbox" name="<%= item.id %>" class="taskstatus" <%= item.state == 1 ? 'checked' : '' %>/>
                 </div>
                 <div class="title col-xs-6">
                     <a href="/task/<%= item.id %>"><%= item.title %></a>
@@ -23,6 +23,7 @@
 
             <div class="text-right ptop">
                 <a href="/tasks/new" class="btn btn-primary">New task</a>
+                <a href="/logout" class="btn">Logout</a>
             </div>
         </div>
     </div>
