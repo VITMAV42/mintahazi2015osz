@@ -21,9 +21,6 @@ module.exports = function (objectrepository) {
       email: req.body.email
     }, function (err, result) {
 
-      //TODO:remove this once model is complete
-      result = undefined;
-
       if ((err) || (result)) {
         res.tpl.error.push('Your email address is already registered!');
         return next();

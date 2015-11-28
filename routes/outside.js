@@ -34,7 +34,10 @@ module.exports = function (app) {
    * Main page
    */
   app.get('/logout',
-    logoutMW(objectRepository)
+    logoutMW(objectRepository),
+    function(req, res, next){
+      res.redirect('/');
+    }
   );
 
   /**

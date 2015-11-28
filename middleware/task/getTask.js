@@ -15,7 +15,7 @@ module.exports = function (objectrepository) {
       id: req.param('taskid')
     }, function (err, result) {
       if ((err) || (!result)) {
-        return req.redirect('/tasks');
+        return res.redirect('/tasks');
       }
 
       res.tpl.task = result;
