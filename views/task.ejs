@@ -4,9 +4,10 @@
     <div class="row">
         <div class="col-xs-12">
             <h2><input type="checkbox"/> <%= task.title %></h2>
+            <a href="/tasks/">Back to the tasks</a>
         </div>
         <div class="col-xs-12">
-            Currently assigned to: <span>Pistike</span>
+            Currently assigned to: <span><%= task._assignedto ? task._assignedto.name : '-' %></span>
         </div>
         <div class="col-xs-12">
             <div class="taskdescription">

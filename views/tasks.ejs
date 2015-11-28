@@ -16,7 +16,7 @@
                     <a href="/task/<%= item.id %>"><%= item.title %></a>
                 </div>
                 <div class="assignedto col-xs-4 text-right">
-                    Pistike
+                    <%= item._assignedto ? item._assignedto.name : '-' %>
                 </div>
             </div>
             <% }); %>

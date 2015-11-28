@@ -11,7 +11,7 @@ module.exports = function (objectrepository) {
 
     taskModel.find({
 
-    }, function (err, results) {
+    }).populate('_assignedto').exec(function (err, results) {
       if (err) {
         return next(new Error('Error getting tasks'));
       }

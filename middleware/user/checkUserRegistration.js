@@ -28,6 +28,7 @@ module.exports = function (objectrepository) {
 
       //create user
       var newUser = new UserModel();
+      newUser.name = req.body.name;
       newUser.email = req.body.email;
       newUser.password = req.body.password;
       newUser.save(function (err) {
