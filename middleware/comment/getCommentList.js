@@ -10,8 +10,8 @@ module.exports = function (objectrepository) {
 
   return function (req, res, next) {
     commentModel.find({
-      task: req.param('taskid')
-    }, function (err, results) {
+      _task: req.param('taskid')
+    }).populate('_user').exec(function (err, results) {
       if (err) {
         return next(err);
       }

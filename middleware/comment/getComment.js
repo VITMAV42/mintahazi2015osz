@@ -12,10 +12,10 @@ module.exports = function (objectrepository) {
   return function (req, res, next) {
 
     commentModel.findOne({
-      id: req.param('commentid')
+      _id: req.param('commentid')
     }, function (err, result) {
       if ((err) || (!result)) {
-        return req.redirect('/task/' + req.param('taskid'));
+        return res.redirect('/task/' + req.param('taskid'));
       }
 
       res.tpl.comment = result;

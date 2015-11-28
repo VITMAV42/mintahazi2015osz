@@ -1,4 +1,5 @@
 var requireOption = require('../common').requireOption;
+var ObjectId = require('mongoose').Schema.Types.ObjectId;
 
 /**
  * Create (or update) a comment if we have the data for it
@@ -9,37 +10,41 @@ var requireOption = require('../common').requireOption;
  */
 module.exports = function (objectrepository) {
 
-  var taskModel = requireOption(objectrepository, 'taskModel');
+  var commentModel = requireOption(objectrepository, 'commentModel');
+  var userModel = requireOption(objectrepository, 'userModel');
+
+  function saveCallback(res, next, comment) {
+    comment.save(function (err, result) {
+      if (err) {
+        return next(err);
+      }
+
+      return res.redirect('/task/' + res.tpl.task.id);
+    });
+  }
 
   return function (req, res, next) {
 
-    /**
-     * Something like:
-     *  if (typeof req.body.comment === 'undefined')
-     *  {
-     *    return next();
-     *  }
-     *
-     *  var comment = undefined;
-     *  if (typeof res.tpl.comment !=='undefined') {
-     *     comment = res.tpl.comment;
-     *  }else{
-     *     comment = new commentModel();
-     *     comment.task = res.tpl.task.id;
-     *     comment.user = req.session.id;
-     *  }
-     *  comment.comment = req.body.comment;
-     *
-     *  comment.save(function(err,result){
-     *    if (err){
-     *      return next(err);
-     *    }
-     *
-     *    return res.redirect('/task/' + res.tpl.task.id);
-     *  )
-     */
+    if (typeof req.body.newcomment === 'undefined') {
+      return next();
+    }
 
-    return next();
-  };
+    var comment = undefined;
+    if (typeof res.tpl.comment !== 'undefined') {
+      comment = res.tpl.comment;
+      comment.comment = req.body.newcomment
 
-};
+      return saveCallback(res, next, comment);
+    } else {
+      comment = new commentModel();
+      comment.comment = req.body.newcomment;
+      comment._task = res.tpl.task;
+
+      userModel.findById(req.session.userid, function (err, me) {
+        comment._user = me;
+        return saveCallback(res, next, comment);
+      });
+    }
+
+  }
+}

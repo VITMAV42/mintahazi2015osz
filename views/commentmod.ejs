@@ -7,12 +7,10 @@
         </div>
         <div class="col-md-push-3 col-md-6 col-xs-12">
 
-            <form method="POST" action="/task/<%= comment.task %>">
+            <form method="POST" action="/comment/<%= comment._task %>/<%= comment._id %>/edit">
                 <div class="form-group">
                     <label for="comment">Comment</label>
-                    <textarea class="form-control" id="comment">
-
-                    </textarea>
+                    <textarea class="form-control" name="newcomment"><%= comment.comment %></textarea>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Save comment"/>
                 <a href="/task/<%= comment.task %>" class="btn btn-default">Cancel</a>
