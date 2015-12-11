@@ -21,8 +21,13 @@ module.exports = function (objectrepository) {
       email: req.body.email
     }, function (err, result) {
 
-      if ((err) || (result)) {
+      if ((err) || (result !== null)) {
         res.tpl.error.push('Your email address is already registered!');
+        return next();
+      }
+
+      if (req.body.name.length < 3) {
+        res.tpl.error.push('The username should be at least 3 characters!');
         return next();
       }
 
